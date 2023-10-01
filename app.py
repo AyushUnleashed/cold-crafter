@@ -28,11 +28,9 @@ if email_id:
             uploaded_file = st.file_uploader("Upload your PDF resume:")
 
             if uploaded_file is not None:
-                resume_path = os.path.join('generations', f"{email_id}_resume.pdf")
-                with open(resume_path, "wb") as f:
-                    f.write(uploaded_file.read())
-
-                st.success("Resume uploaded and saved successfully.")
+                resume_directory = 'generations'
+                os.makedirs(resume_directory, exist_ok=True)  # Create the directory if it doesn't exist
+                resume_path = os.path.join(resume_directory, f"{email_id}_resume.pdf")
 
                 # Call a function to convert PDF to text
                 text_resume = convert_pdf_to_text(resume_path)
