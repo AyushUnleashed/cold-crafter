@@ -1,11 +1,13 @@
 import os
 import PyPDF2
 
+class FileNotFound(Exception):
+    pass
+
 def convert_pdf_to_text(pdf_filename):
     # Check if the file exists
     if not os.path.exists(pdf_filename):
-        print(f"The file '{pdf_filename}' does not exist.")
-        return
+        raise FileNotFound(f"The file '{pdf_filename}' does not exist.")
 
     try:
         # Open the PDF file
