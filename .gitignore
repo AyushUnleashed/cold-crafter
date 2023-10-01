@@ -1,0 +1,7 @@
+venv
+cold_email_generator.py
+.env
+*.iml
+.idea
+__pycache__/
+generations/*

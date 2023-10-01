@@ -1,0 +1,6 @@
+requests
+python-dotenv
+streamlit
+openai
+pypdf2
+typing
