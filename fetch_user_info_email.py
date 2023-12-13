@@ -7,8 +7,14 @@ def fetch_user_info_from_email(email):
         with open(filename, 'r',encoding='utf-8') as file:
             content = file.read()
 
-        print(content)
-        return content
+        # Split the content into words
+        words = content.split()
+
+        # Take only the first 400 words
+        selected_words = ' '.join(words[:400])
+
+        print(selected_words)
+        return selected_words
     except FileNotFoundError:
         # Handle the case where the file doesn't exist
         print(f"Resume file for {email} not found.")

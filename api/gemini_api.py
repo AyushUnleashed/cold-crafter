@@ -7,10 +7,11 @@ import streamlit as st
 root_env_path = find_dotenv()
 load_dotenv(root_env_path)
 
+gemini_api_key = os.getenv('GEMINI_API_KEY') or st.secrets['GEMINI_API_KEY']
 def fetch_gemini_response(user_prompt: str):
     try:
         # Configure the Google Generative AI API client
-        genai.configure(api_key=os.environ['GEMINI_API_KEY'])
+        genai.configure(api_key=gemini_api_key)
 
         # Create a Gemini model object
         model = genai.GenerativeModel('gemini-pro')

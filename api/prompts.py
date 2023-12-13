@@ -16,7 +16,10 @@ have much time.Use relevant details from User's experience & skills to write dir
 
 
 
-
+REDUCE_PERSONAL_INFO = """"
+I'll be pasting dump of text scrapped from a persons's resume,
+reply only with json with only one key "user_info" value is string of user's profile, which will be used for applying for jon, generate a summarised version of the profile, while keeping the quantitative parts to grab recruiters attenton, no explanation text
+"""
 
 
 CLEAN_COMPANY_DESCRIPTION_PROMPT = """"
