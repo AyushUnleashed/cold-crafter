@@ -1,6 +1,7 @@
 # Get Company description from a link
 import os
 from api.gpt_api import set_system_prompt, fetch_openai_response
+from api.gemini_api import fetch_gemini_response
 from api.prompts import CLEAN_COMPANY_DESCRIPTION_PROMPT
 from metaphor.metaphor_company_description import get_extract_from_metaphor
 
@@ -15,7 +16,8 @@ def prepare_llm_prompt(company_dump: str) -> str:
 def clean_company_info_with_llm(llm_prompt):
     # Fetch llm response
 
-    gpt_response_text = fetch_openai_response(llm_prompt)
+    #gpt_response_text = fetch_openai_response(llm_prompt)
+    gpt_response_text = fetch_gemini_response(llm_prompt)
 
     if gpt_response_text:
 

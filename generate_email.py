@@ -1,14 +1,16 @@
 from typing import Dict
 from fetch_user_info_email import fetch_user_info_from_email
 from api.gpt_api import fetch_openai_response, set_system_prompt
+from api.gemini_api import fetch_gemini_response
 from api.prompts import BASE_PROMPT
 import os
 
 
 def prepare_llm_prompt(user_info: Dict, company_info) -> str:
     # Prepare the prompt for LLM.
-    set_system_prompt(BASE_PROMPT)
-    llm_prompt = f"\n ---"
+    #set_system_prompt(BASE_PROMPT)
+    llm_prompt = BASE_PROMPT
+    llm_prompt += f"\n ---"
     llm_prompt += f"\nUser's Details:\n{user_info}"
     llm_prompt += f"\n ---"
     llm_prompt += f"\nCompany's Details:\n{company_info}"
@@ -29,8 +31,10 @@ def generate_email(email, company_info="", company_name="") -> str:
         # Prepare llm prompt
         pre_str = f"company name: {company_name} \n "
         llm_prompt: str = prepare_llm_prompt(user_info, pre_str + company_info)
+        print(llm_prompt)
 
-        message = fetch_openai_response(llm_prompt)
+        #message = fetch_openai_response(llm_prompt)
+        message = fetch_gemini_response(llm_prompt)
         save_message_to_file(message)
 
         return message
@@ -54,4 +58,5 @@ def save_message_to_file(message, folder_name="generations", file_name="generate
 
 
 if __name__ == "__main__":
-    message = generate_email()
+    message = generate_email("yogendramanawat@gmail.com","Dashtoon is comic creation company","dashtoon")
+    print(message)
