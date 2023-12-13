@@ -6,7 +6,7 @@ from generate_email import generate_email
 # Streamlit app title
 st.title("Cold Crafter")
 st.subheader("Your Personalized cold email writer")
-
+st.markdown("Made by [@AyushUnleashed](https://twitter.com/ayushunleashed)")
 # Function to validate email
 def is_valid_email(email):
     return '@' in email
